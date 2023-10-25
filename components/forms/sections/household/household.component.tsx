@@ -7,6 +7,7 @@ const membersInitialState = [
     id: 1,
     covered: true,
     fullName: 'Tom Netzband',
+    nickName: 'Tom',
     subscriber: false,
     insurance: 'primary',
     idSsn: '000-00-0000',
@@ -15,6 +16,7 @@ const membersInitialState = [
     id: 2,
     covered: true,
     fullName: 'Christine Netzband',
+    nickName: 'Chris',
     subscriber: true,
     insurance: 'primary',
     idSsn: '000-00-0000',
@@ -23,6 +25,7 @@ const membersInitialState = [
     id: 3,
     covered: false,
     fullName: 'Stephen Netzband',
+    nickName: 'Steve',
     subscriber: false,
     insurance: 'primary',
     idSsn: '000-00-0000',
@@ -30,14 +33,10 @@ const membersInitialState = [
 ];
 
 export default function Household() {
-  const [members, setMembers] = useState(membersInitialState);
+  const [members, setMembers] = useState<Member[]>(membersInitialState);
 
   const handleFormChange = (e: FormEvent, member: Member) => {
     const target = e.target as HTMLInputElement;
-
-    console.log(target.type);
-    console.log(target.name);
-    console.log(target.checked);
 
     let val = target.value;
 
@@ -64,17 +63,18 @@ export default function Household() {
 
       return member;
     });
-    console.log(updatedMembers);
     setMembers(updatedMembers);
+
+    console.log(updatedMembers);
   };
 
   return (
-    <>
-      <h2 className="mb-3">Household</h2>
-      <div className="grid gap-4 grid-cols-6">
+    <div className="text-neem-font-default">
+      <h2 className="mb-3 text-base">Household</h2>
+      <div className="grid gap-4 grid-cols-6 text-xs">
         <div className="col-span-1">Covered</div>
         <div className="col-span-2">Name</div>
-        <div className="col-span-1">Subscriber</div>
+        <div className="col-span-1 text-center">Subscriber</div>
         <div className="col-span-1">Insurance</div>
         <div className="col-span-1">ID</div>
 
@@ -88,6 +88,6 @@ export default function Household() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
