@@ -1,7 +1,12 @@
-import Head from "next/head";
-import Image from "next/image";
+import Head from 'next/head';
+import { Rubik } from '@next/font/google';
 
-import Form1 from "../components/Form1";
+const rubik = Rubik({
+  weight: '400',
+  variable: '--font-rubik',
+});
+
+import Form1 from '../components/Form1';
 
 export default function Home() {
   return (
@@ -12,7 +17,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className={rubik.className}>
         <br />
         <h1 className="text-center">Add Insurance</h1>
         <Form1 />
